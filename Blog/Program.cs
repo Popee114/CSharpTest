@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
+using Blog.Services;
 using Microsoft.Extensions.Logging;
 
 namespace Blog
@@ -29,6 +30,8 @@ namespace Blog
             // Ivan: 4
             // Petr: 2
             // Elena: 3
+            BlogService.NumberOfCommentsPerUser(context);
+            Console.ReadKey();
 
             Console.WriteLine("Posts ordered by date of last comment. Result should include text of last comment:");
             //ToDo: write a query and dump the data to console
@@ -36,7 +39,8 @@ namespace Blog
             // Post2: '2020-03-06', '4'
             // Post1: '2020-03-05', '8'
             // Post3: '2020-02-14', '9'
-
+            BlogService.PostsOrderedByLastCommentDate(context);
+            Console.ReadKey();
 
             Console.WriteLine("How many last comments each user left:");
             // 'last comment' is the latest Comment in each Post
@@ -44,15 +48,8 @@ namespace Blog
             // Expected result (format could be different, e.g. object serialized to JSON is ok):
             // Ivan: 2
             // Petr: 1
-
-            
-            // Console.WriteLine(
-            //     JsonSerializer.Serialize(BlogService.NumberOfCommentsPerUser(context)));
-            // Console.WriteLine(
-            //     JsonSerializer.Serialize(BlogService.PostsOrderedByLastCommentDate(context)));
-            // Console.WriteLine(
-            //     JsonSerializer.Serialize(BlogService.NumberOfLastCommentsLeftByUser(context)));
-
+            BlogService.NumberOfLastCommentsLeftByUser(context);
+            Console.ReadKey();
         }
 
         private static void InitializeData(MyDbContext context)
